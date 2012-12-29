@@ -19,6 +19,8 @@
 		B23C908C168EDCC9003EA9AC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23C908A168EDCC9003EA9AC /* MainStoryboard.storyboard */; };
 		B23C908F168EDCC9003EA9AC /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C908E168EDCC9003EA9AC /* MasterViewController.m */; };
 		B23C9092168EDCC9003EA9AC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9091168EDCC9003EA9AC /* DetailViewController.m */; };
+		B23C909A168EDFA9003EA9AC /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9099168EDFA9003EA9AC /* Dream.m */; };
+		B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C909C168EE32D003EA9AC /* DreamDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		B23C908E168EDCC9003EA9AC /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		B23C9090168EDCC9003EA9AC /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		B23C9091168EDCC9003EA9AC /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B23C9098168EDFA9003EA9AC /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
+		B23C9099168EDFA9003EA9AC /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
+		B23C909B168EE32D003EA9AC /* DreamDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamDataController.h; sourceTree = "<group>"; };
+		B23C909C168EE32D003EA9AC /* DreamDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 				B23C9081168EDCC9003EA9AC /* AppDelegate.h */,
 				B23C9082168EDCC9003EA9AC /* AppDelegate.m */,
 				B23C908A168EDCC9003EA9AC /* MainStoryboard.storyboard */,
+				B23C9098168EDFA9003EA9AC /* Dream.h */,
+				B23C9099168EDFA9003EA9AC /* Dream.m */,
+				B23C909B168EE32D003EA9AC /* DreamDataController.h */,
+				B23C909C168EE32D003EA9AC /* DreamDataController.m */,
 				B23C908D168EDCC9003EA9AC /* MasterViewController.h */,
 				B23C908E168EDCC9003EA9AC /* MasterViewController.m */,
 				B23C9090168EDCC9003EA9AC /* DetailViewController.h */,
@@ -182,6 +192,8 @@
 				B23C9083168EDCC9003EA9AC /* AppDelegate.m in Sources */,
 				B23C908F168EDCC9003EA9AC /* MasterViewController.m in Sources */,
 				B23C9092168EDCC9003EA9AC /* DetailViewController.m in Sources */,
+				B23C909A168EDFA9003EA9AC /* Dream.m in Sources */,
+				B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
