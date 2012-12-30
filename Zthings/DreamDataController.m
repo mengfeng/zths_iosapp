@@ -107,7 +107,7 @@
             
             NSString *current_author=[current_record objectForKey:@"author"];
             NSString *current_content=[current_record objectForKey:@"record_content"];
-            NSString *current_title=[current_record objectForKey:@"record_title"];
+            NSString *current_title=[current_record objectForKey:@"title"];
 
             NSDate *current_date=[NSDate date];
             NSString *current_instance_key=[current_record objectForKey:@"record_key"];
@@ -120,7 +120,7 @@
             //NSLog(@"current author is %@, current content is %@", current_author, current_content);
         }
         
-        NSLog(@"current data count is %d", [self count_of_dreams]);
+        //NSLog(@"current data count is %d", [self count_of_dreams]);
     }
     
     

@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "DreamDataController.h"
 #import "Dream.h"
+#import "ZthingsUtil.h"
 
 @interface MasterViewController ()
 
@@ -81,9 +82,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     Dream *object = [self.data_controller object_at_index:indexPath.row];
-    cell.textLabel.text = object.author;
+    cell.textLabel.text = object.title;
     cell.detailTextLabel.text=object.content;
-    NSLog(@"Autho: %@, Content: %@", object.author, object.content);
+    //NSLog(@"Autho: %@, Content: %@", object.author, object.content);
     return cell;
 }
 
@@ -151,7 +152,7 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     
-    NSLog(@"Data count after the URL Connection is %d", [self.data_controller count_of_dreams]);
+    //NSLog(@"Data count after the URL Connection is %d", [self.data_controller count_of_dreams]);
     
 }
 
@@ -183,12 +184,15 @@
         
         //NSInteger records_count=(int)[json_obj objectForKey:@"records_count"];
         NSArray *records=[json_obj objectForKey:@"records"];
-        
+        NSArray *strings_to_replace=[NSArray arrayWithObjects:@"<br/>",@"<br>",@"<br/",@"<br",nil];
+        NSString *with_string=@"\n";
         for(NSDictionary *current_record in records){
             
+            
             NSString *current_author=[current_record objectForKey:@"author"];
-            NSString *current_content=[current_record objectForKey:@"record_content"];
-            NSString *current_title=[current_record objectForKey:@"record_title"];
+            NSString *current_content= [ZthingsUtil replace_string_by_array:[current_record objectForKey:@"record_content"] strings_to_replace:strings_to_replace with_string:with_string];
+            NSString *current_title=[ZthingsUtil replace_string_by_array:[current_record objectForKey:@"record_title"] strings_to_replace:strings_to_replace with_string:with_string];
+
             
             NSDate *current_date=[NSDate date];
             NSString *current_instance_key=[current_record objectForKey:@"record_key"];
@@ -201,7 +205,7 @@
             //NSLog(@"current author is %@, current content is %@", current_author, current_content);
         }
         
-        NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
+        //NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
         
         [self.tableView reloadData];
     }

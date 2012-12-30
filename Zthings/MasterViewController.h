@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class DreamDataController;
 @class Dream;
+@class ZthingsUtil;
 
 @interface MasterViewController : UITableViewController
 @property (strong, nonatomic) DreamDataController *data_controller;

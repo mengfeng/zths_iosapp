@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B211812A169040C70010EB39 /* ZthingsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B2118129169040C70010EB39 /* ZthingsUtil.m */; };
 		B23C9073168EDCC9003EA9AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9072168EDCC9003EA9AC /* UIKit.framework */; };
 		B23C9075168EDCC9003EA9AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9074168EDCC9003EA9AC /* Foundation.framework */; };
 		B23C9077168EDCC9003EA9AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9076168EDCC9003EA9AC /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2118128169040C70010EB39 /* ZthingsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZthingsUtil.h; sourceTree = "<group>"; };
+		B2118129169040C70010EB39 /* ZthingsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZthingsUtil.m; sourceTree = "<group>"; };
 		B23C906E168EDCC9003EA9AC /* Zthings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zthings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23C9072168EDCC9003EA9AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B23C9074168EDCC9003EA9AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +107,8 @@
 				B23C9090168EDCC9003EA9AC /* DetailViewController.h */,
 				B23C9091168EDCC9003EA9AC /* DetailViewController.m */,
 				B23C9079168EDCC9003EA9AC /* Supporting Files */,
+				B2118128169040C70010EB39 /* ZthingsUtil.h */,
+				B2118129169040C70010EB39 /* ZthingsUtil.m */,
 			);
 			path = Zthings;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				B23C9092168EDCC9003EA9AC /* DetailViewController.m in Sources */,
 				B23C909A168EDFA9003EA9AC /* Dream.m in Sources */,
 				B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */,
+				B211812A169040C70010EB39 /* ZthingsUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +316,7 @@
 				B23C9097168EDCC9003EA9AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
