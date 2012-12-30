@@ -9,6 +9,11 @@
 #import "Dream.h"
 
 @implementation Dream
+@synthesize author=_author;
+@synthesize content=_content;
+@synthesize email=_email;
+@synthesize date=_date;
+@synthesize instance_key=_instance_key;
 
 -(id) init_with_properties:(NSString *)author content:(NSString *)content email:(NSString *)email date:(NSDate *)date instance_key:(NSString *)instance_key
 {
@@ -20,6 +25,6 @@
         self.date=date;
     }
     return self;
-};
+}
 
 @end
