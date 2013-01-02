@@ -10,6 +10,7 @@
 
 #import "DetailViewController.h"
 #import "DreamDataController.h"
+#import "AddDreamViewController.h"
 #import "Dream.h"
 #import "ZthingsUtil.h"
 
@@ -40,10 +41,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
     
     
     [self _setup_data_controller];
@@ -79,7 +76,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"main_obj_cell" forIndexPath:indexPath];
 
     Dream *object = [self.data_controller object_at_index:indexPath.row];
     cell.textLabel.text = object.title;
@@ -104,29 +101,34 @@
 //    }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (IBAction)add_new_obj:(id)sender {
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"show_details"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Dream *object = [_data_controller object_at_index:indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+}
+
+-(IBAction) done:(UIStoryboardSegue *)segue
+{
+    if([[segue identifier] isEqualToString:@"return_input"]){
+        AddDreamViewController *add_VC=[segue sourceViewController];
+        if(add_VC.created_data_obj){
+            [self.data_controller add_object:add_VC.created_data_obj];
+        }
+        
+        [self.tableView reloadData];
+    }
+}
+
+-(IBAction) cancel:(UIStoryboardSegue *)segue
+{
+
 }
 
 -(void) _setup_data_controller
@@ -181,34 +183,45 @@
     NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:response_data options:NSJSONReadingMutableContainers error:&json_error];
     
     if(json_obj){
+        NSString *status=[json_obj objectForKey:@"status"];
         
-        //NSInteger records_count=(int)[json_obj objectForKey:@"records_count"];
-        NSArray *records=[json_obj objectForKey:@"records"];
-        NSArray *strings_to_replace=[NSArray arrayWithObjects:@"<br/>",@"<br>",@"<br/",@"<br",nil];
-        NSString *with_string=@"\n";
-        for(NSDictionary *current_record in records){
+        if([status isEqualToString:@"ok"]){
             
-            
-            NSString *current_author=[current_record objectForKey:@"author"];
-            NSString *current_content= [ZthingsUtil replace_string_by_array:[current_record objectForKey:@"record_content"] strings_to_replace:strings_to_replace with_string:with_string];
-            NSString *current_title=[ZthingsUtil replace_string_by_array:[current_record objectForKey:@"record_title"] strings_to_replace:strings_to_replace with_string:with_string];
+            //NSInteger records_count=(int)[json_obj objectForKey:@"records_count"];
+            NSArray *records=[json_obj objectForKey:@"records"];
+            for(NSDictionary *current_record in records){
+                
+                
+                NSString *current_author=[current_record objectForKey:@"author"];
+                NSString *current_content=[current_record objectForKey:@"record_content"];
+                
+                NSString *current_title=[current_record objectForKey:@"record_title"];
+                
+                
+                NSDate *current_date=[NSDate date];
+                NSString *current_instance_key=[current_record objectForKey:@"record_key"];
+                NSString *current_email=[current_record objectForKey:@"email"];
+                NSString *current_image_url=[current_record objectForKey:@"image_url"];
+                NSString *current_image_key=@"";
+                
+                [self.data_controller add_object_with_properties:current_author content:current_content image_url:current_image_url title:current_title email:current_email date:current_date instance_key:current_instance_key image_key:current_image_key];
+                
+                //NSLog(@"current author is %@, current content is %@", current_author, current_content);
 
-            
-            NSDate *current_date=[NSDate date];
-            NSString *current_instance_key=[current_record objectForKey:@"record_key"];
-            NSString *current_email=[current_record objectForKey:@"email"];
-            NSString *current_image_url=[current_record objectForKey:@"image_url"];
-            NSString *current_image_key=@"";
-            
-            [self.data_controller add_object_with_properties:current_author content:current_content image_url:current_image_url title:current_title email:current_email date:current_date instance_key:current_instance_key image_key:current_image_key];
-            
-            //NSLog(@"current author is %@, current content is %@", current_author, current_content);
+        
+            }
+        }else{
+                NSLog(@"JSON data contains error message: %@",[json_obj objectForKey:@"message"]);
+                
+            }
+    }else{
+            NSLog(@"Fail to fetch JSON data: %@", [json_error localizedDescription]);
         }
         
         //NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
         
         [self.tableView reloadData];
-    }
+    
     
     
 }

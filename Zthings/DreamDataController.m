@@ -74,6 +74,11 @@
     
 }
 
+-(void) add_object:(Dream *)data_obj
+{
+    [self.dreamlist addObject:data_obj];
+}
+
 -(void)connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
 {
     [response_data setLength:0];

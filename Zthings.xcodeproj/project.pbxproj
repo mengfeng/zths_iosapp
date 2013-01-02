@@ -22,6 +22,7 @@
 		B23C9092168EDCC9003EA9AC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9091168EDCC9003EA9AC /* DetailViewController.m */; };
 		B23C909A168EDFA9003EA9AC /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9099168EDFA9003EA9AC /* Dream.m */; };
 		B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C909C168EE32D003EA9AC /* DreamDataController.m */; };
+		B24D9AE81691817E007F4128 /* AddDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D9AE71691817D007F4128 /* AddDreamViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		B23C9099168EDFA9003EA9AC /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
 		B23C909B168EE32D003EA9AC /* DreamDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamDataController.h; sourceTree = "<group>"; };
 		B23C909C168EE32D003EA9AC /* DreamDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamDataController.m; sourceTree = "<group>"; };
+		B24D9AE61691817D007F4128 /* AddDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamViewController.h; sourceTree = "<group>"; };
+		B24D9AE71691817D007F4128 /* AddDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				B23C9081168EDCC9003EA9AC /* AppDelegate.h */,
 				B23C9082168EDCC9003EA9AC /* AppDelegate.m */,
 				B23C908A168EDCC9003EA9AC /* MainStoryboard.storyboard */,
+				B24D9AE61691817D007F4128 /* AddDreamViewController.h */,
+				B24D9AE71691817D007F4128 /* AddDreamViewController.m */,
 				B23C9098168EDFA9003EA9AC /* Dream.h */,
 				B23C9099168EDFA9003EA9AC /* Dream.m */,
 				B23C909B168EE32D003EA9AC /* DreamDataController.h */,
@@ -200,6 +205,7 @@
 				B23C909A168EDFA9003EA9AC /* Dream.m in Sources */,
 				B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */,
 				B211812A169040C70010EB39 /* ZthingsUtil.m in Sources */,
+				B24D9AE81691817E007F4128 /* AddDreamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

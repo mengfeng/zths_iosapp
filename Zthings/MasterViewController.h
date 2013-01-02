@@ -13,5 +13,8 @@
 
 @interface MasterViewController : UITableViewController
 @property (strong, nonatomic) DreamDataController *data_controller;
+- (IBAction)add_new_obj:(id)sender;
+-(IBAction) done:(UIStoryboardSegue *) segue;
+-(IBAction) cancel:(UIStoryboardSegue *) segue;
 
 @end

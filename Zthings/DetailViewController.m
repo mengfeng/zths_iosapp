@@ -7,7 +7,7 @@
 //
 
 #import "DetailViewController.h"
-
+#import "Dream.h"
 @interface DetailViewController ()
 - (void)configureView;
 @end
@@ -31,7 +31,12 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.author_label.text = [self.detailItem author];
+        self.title_label.text=[self.detailItem title];
+        self.content_label.text=[self.detailItem content];
+        [self.content_label sizeToFit];
+        //NSLog(@"current content is %@", [self.detailItem content]);
+        
     }
 }
 

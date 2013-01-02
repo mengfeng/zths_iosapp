@@ -25,5 +25,6 @@
                               date:(NSDate *) date
                       instance_key:(NSString *) instance_key
                          image_key:(NSString *) image_key;
+-(void) add_object:(Dream *) data_obj;
 
 @end

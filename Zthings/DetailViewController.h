@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Dream;
 
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
+@property (weak, nonatomic) IBOutlet UILabel *author_label;
+@property (weak, nonatomic) IBOutlet UILabel *title_label;
+@property (weak, nonatomic) IBOutlet UITextView *content_label;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end
