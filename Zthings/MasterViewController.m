@@ -23,7 +23,7 @@
 @end
 @interface MasterViewController (){
     NSString *url_string;
-    NSMutableData *response_data;
+    
 
 }
 @end
@@ -148,37 +148,16 @@
     url_string=[@"http://zinthedream.appspot.com/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
     //NSLog(@"remote url is %@", url_string);
     
-    response_data=[NSMutableData data];
+    NSData *response_data=[NSMutableData data];
     
     NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    //[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSURLResponse *response=nil;
+    NSError *error=[[NSError alloc] init];
     
+    response_data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     //NSLog(@"Data count after the URL Connection is %d", [self.data_controller count_of_dreams]);
-    
-}
-
--(void)connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
-{
-    [response_data setLength:0];
-}
-
--(void)connection:(NSURLConnection *) connection didReceiveData:(NSData *)data
-{
-    [response_data appendData:data];
-}
-
-
--(void)connection:(NSURLConnection *) connection didFailWithError:(NSError *)error
-{
-    NSLog(@"connection fails with error description: %@", [error description]);
-}
-
--(void)connectionDidFinishLoading: (NSURLConnection *)connection
-{
-    //[connection release];
-    //NSString *response_string=[[NSString alloc] initWithData:response_data encoding:NSUTF8StringEncoding];
-    
     NSError *json_error=[[NSError alloc] init];
     NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:response_data options:NSJSONReadingMutableContainers error:&json_error];
     
@@ -207,26 +186,22 @@
                 [self.data_controller add_object_with_properties:current_author content:current_content image_url:current_image_url title:current_title email:current_email date:current_date instance_key:current_instance_key image_key:current_image_key];
                 
                 //NSLog(@"current author is %@, current content is %@", current_author, current_content);
-
-        
-            }
-        }else{
-                NSLog(@"JSON data contains error message: %@",[json_obj objectForKey:@"message"]);
+                
                 
             }
-    }else{
-            NSLog(@"Fail to fetch JSON data: %@", [json_error localizedDescription]);
+        }else{
+            NSLog(@"JSON data contains error message: %@",[json_obj objectForKey:@"message"]);
+            
         }
-        
-        //NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
-        
-        [self.tableView reloadData];
+    }else{
+        NSLog(@"Fail to fetch JSON data: %@", [json_error localizedDescription]);
+    }
     
+    //NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
     
-    
+    [self.tableView reloadData];
+
 }
-
-
 
 
 @end

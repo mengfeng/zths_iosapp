@@ -14,7 +14,6 @@
 @property (nonatomic) NSMutableArray *dreamlist;
 
 
--(id) init_from_remote_json:(NSString *) data_class;
 -(NSInteger) count_of_dreams;
 -(Dream *) object_at_index:(NSInteger) index;
 -(void) add_object_with_properties:(NSString *) author

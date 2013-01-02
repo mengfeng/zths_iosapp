@@ -22,6 +22,11 @@
 		B23C9092168EDCC9003EA9AC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9091168EDCC9003EA9AC /* DetailViewController.m */; };
 		B23C909A168EDFA9003EA9AC /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9099168EDFA9003EA9AC /* Dream.m */; };
 		B23C909D168EE32D003EA9AC /* DreamDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C909C168EE32D003EA9AC /* DreamDataController.m */; };
+		B24A018116941ED2006CF19A /* Z.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018016941ED2006CF19A /* Z.png */; };
+		B24A018416942003006CF19A /* Z_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018316942003006CF19A /* Z_retina.png */; };
+		B24A018616942214006CF19A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018516942214006CF19A /* Default.png */; };
+		B24A018816942318006CF19A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018716942318006CF19A /* Default@2x.png */; };
+		B24A018A16942321006CF19A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018916942321006CF19A /* Default-568h@2x.png */; };
 		B24D9AE81691817E007F4128 /* AddDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D9AE71691817D007F4128 /* AddDreamViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +55,11 @@
 		B23C9099168EDFA9003EA9AC /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
 		B23C909B168EE32D003EA9AC /* DreamDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamDataController.h; sourceTree = "<group>"; };
 		B23C909C168EE32D003EA9AC /* DreamDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamDataController.m; sourceTree = "<group>"; };
+		B24A018016941ED2006CF19A /* Z.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Z.png; sourceTree = "<group>"; };
+		B24A018316942003006CF19A /* Z_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Z_retina.png; sourceTree = "<group>"; };
+		B24A018516942214006CF19A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B24A018716942318006CF19A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B24A018916942321006CF19A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B24D9AE61691817D007F4128 /* AddDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamViewController.h; sourceTree = "<group>"; };
 		B24D9AE71691817D007F4128 /* AddDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +81,11 @@
 		B23C9063168EDCC9003EA9AC = {
 			isa = PBXGroup;
 			children = (
+				B24A018916942321006CF19A /* Default-568h@2x.png */,
+				B24A018716942318006CF19A /* Default@2x.png */,
+				B24A018516942214006CF19A /* Default.png */,
+				B24A018316942003006CF19A /* Z_retina.png */,
+				B24A018016941ED2006CF19A /* Z.png */,
 				B23C9078168EDCC9003EA9AC /* Zthings */,
 				B23C9071168EDCC9003EA9AC /* Frameworks */,
 				B23C906F168EDCC9003EA9AC /* Products */,
@@ -188,6 +203,11 @@
 				B23C9087168EDCC9003EA9AC /* Default@2x.png in Resources */,
 				B23C9089168EDCC9003EA9AC /* Default-568h@2x.png in Resources */,
 				B23C908C168EDCC9003EA9AC /* MainStoryboard.storyboard in Resources */,
+				B24A018116941ED2006CF19A /* Z.png in Resources */,
+				B24A018416942003006CF19A /* Z_retina.png in Resources */,
+				B24A018616942214006CF19A /* Default.png in Resources */,
+				B24A018816942318006CF19A /* Default@2x.png in Resources */,
+				B24A018A16942321006CF19A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,6 @@
 @property(strong,nonatomic) Dream *created_data_obj;
 
 @property (weak, nonatomic) IBOutlet UITextField *author_input;
-@property (weak, nonatomic) IBOutlet UITextField *title_input;
 @property (weak, nonatomic) IBOutlet UITextView *content_input;
 
 @end
