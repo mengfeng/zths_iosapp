@@ -21,6 +21,7 @@
         self.image_key=image_key;
         self.image_url=image_url;
         self.title=title;
+        self.instance_key=instance_key;
     }
     return self;
 }

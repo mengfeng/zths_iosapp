@@ -10,12 +10,17 @@
 #import "Dream.h"
 
 @interface DreamDataController()
+-(void) initialize_config;
 -(BOOL) add_new_obj_to_server:(Dream *)data_obj;
+-(BOOL) remove_object_from_server:(Dream *)data_obj;
+-(BOOL) send_request_server:(NSString *) url_string post_string:(NSString *) post_string;
 @end
 
 @interface DreamDataController()
 {
-
+    NSString *host_name;
+    NSString *app_name;
+    
 }
 @end
 
@@ -29,9 +34,17 @@
     
     self.dreamlist=[[NSMutableArray alloc] init];
     
-    
+    [self initialize_config];
     return self;
     
+
+}
+
+-(void) initialize_config
+{
+    host_name=@"http://localhost:8081";
+    //host_name=@"http://zinthedream.appspot.com";
+    app_name=@"zdream";
 
 }
 
@@ -75,11 +88,11 @@
 
 -(id) init_data_from_remote_json:(NSString *)data_class
 {
-    self.dreamlist=[[NSMutableArray alloc] init];
-    //NSString *url_string=[@"http://zinthedream.appspot.com/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
-    NSString *url_string=[@"http://localhost:8081/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
+    [self initialize_config];
     
-    NSData *response_data=[NSMutableData data];
+    self.dreamlist=[[NSMutableArray alloc] init];
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/rpc?dispatcher=get_records&data_class=%@",host_name,data_class];
+       NSData *response_data=[NSMutableData data];
     
     NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
     
@@ -131,11 +144,36 @@
 
 -(BOOL) add_new_obj_to_server:(Dream *)data_obj
 {
-    //NSString *url_string=@"http://zinthedream.appspot.com/zdream";
-    NSString *url_string=@"http:localhost:8081/zdream";
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/%@",host_name,app_name] ;
     NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=insert&author=%@&description=%@",data_obj.author,data_obj.content ];
-    post_string=[post_string stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        
     
+    return [self send_request_server:url_string post_string:post_string];
+}
+
+-(void) remove_object_at_index:(NSInteger)index
+{
+    Dream* current_obj=[self object_at_index:index];
+    if(current_obj){
+        [self.dreamlist removeObjectAtIndex:index];
+        [self remove_object_from_server:current_obj];
+    }
+    
+}
+
+-(BOOL) remove_object_from_server:(Dream *)data_obj
+{
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/%@",host_name,app_name] ;
+    NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=delete&record_key=%@",data_obj.instance_key];
+    
+    
+    return [self send_request_server:url_string post_string:post_string];
+}
+
+-(BOOL) send_request_server:(NSString *)url_string post_string:(NSString *)post_string
+{
+    post_string=[post_string stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+    //NSLog(@"post string is %@",post_string);
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_string]];
     request.HTTPMethod=@"POST";
     request.HTTPBody=[post_string dataUsingEncoding:NSUTF8StringEncoding];
@@ -145,9 +183,9 @@
     NSData *response_data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString *response_string=[[NSString alloc] initWithData:response_data encoding:NSUTF8StringEncoding];
-    
     //NSLog(@"The response string is %@", response_string);
     return YES;
+
 }
 
 

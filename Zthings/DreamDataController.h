@@ -27,5 +27,6 @@
 -(void) add_object:(Dream *) data_obj;
 -(void) add_object_at_head:(Dream *) data_obj;
 -(id) init_data_from_remote_json:(NSString *)data_class;
+-(void) remove_object_at_index:(NSInteger) index;
 
 @end
