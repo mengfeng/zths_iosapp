@@ -28,8 +28,7 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
+    
     if (self.detailItem) {
         self.author_label.text = [self.detailItem author];
         self.title_label.text=[self.detailItem title];
@@ -39,7 +38,7 @@
         NSString *current_date_string=[current_date_formatter stringFromDate:[self.detailItem date]];
         self.date_label.text=current_date_string;
         [self.content_label sizeToFit];
-        //NSLog(@"current content is %@", [self.detailItem content]);
+       
         
     }
 }
@@ -47,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
     [self configureView];
 }
 
