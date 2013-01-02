@@ -34,6 +34,10 @@
         self.author_label.text = [self.detailItem author];
         self.title_label.text=[self.detailItem title];
         self.content_label.text=[self.detailItem content];
+        NSDateFormatter *current_date_formatter=[[NSDateFormatter alloc] init];
+        [current_date_formatter setDateFormat:@"EEE, dd MMM yyyy"];
+        NSString *current_date_string=[current_date_formatter stringFromDate:[self.detailItem date]];
+        self.date_label.text=current_date_string;
         [self.content_label sizeToFit];
         //NSLog(@"current content is %@", [self.detailItem content]);
         

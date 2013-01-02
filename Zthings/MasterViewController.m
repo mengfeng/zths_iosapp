@@ -76,7 +76,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Cell method is called.");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"main_obj_cell" forIndexPath:indexPath];
 
     Dream *object = [self.data_controller object_at_index:indexPath.row];
@@ -131,11 +130,7 @@
 
 -(void) setup_data_controller
 {
-    
-    
-    self.data_controller = [[DreamDataController alloc] init];
-    
-    
+
     [self init_data_from_remote_json:@"Dream"];
     
     
@@ -146,9 +141,10 @@
 
 -(void) init_data_from_remote_json:(NSString *)data_class
 {
-    url_string=[@"http://zinthedream.appspot.com/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
-    NSLog(@"remote url is %@", url_string);
-    
+    self.data_controller = [[DreamDataController alloc] init];
+    //url_string=[@"http://zinthedream.appspot.com/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
+    url_string=[@"http://localhost:8081/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
+        
     NSData *response_data=[NSMutableData data];
     
     NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
@@ -177,8 +173,10 @@
                 
                 NSString *current_title=[current_record objectForKey:@"record_title"];
                 
-                
-                NSDate *current_date=[NSDate date];
+                NSString *date_string=[current_record objectForKey:@"created"];
+                NSDateFormatter *current_date_formater=[[NSDateFormatter alloc] init];
+                [current_date_formater setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss 'GMT'"] ;
+                NSDate *current_date=[current_date_formater dateFromString:date_string];
                 NSString *current_instance_key=[current_record objectForKey:@"record_key"];
                 NSString *current_email=[current_record objectForKey:@"email"];
                 NSString *current_image_url=[current_record objectForKey:@"image_url"];

@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *author_label;
 @property (weak, nonatomic) IBOutlet UILabel *title_label;
 @property (weak, nonatomic) IBOutlet UITextView *content_label;
+@property (weak, nonatomic) IBOutlet UILabel *date_label;
 
 @end

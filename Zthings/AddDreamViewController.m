@@ -77,7 +77,8 @@
 
 -(BOOL) add_new_obj_to_server:(Dream *)data_obj
 {
-    NSString *url_string=@"http://zinthedream.appspot.com/zdream";
+    //NSString *url_string=@"http://zinthedream.appspot.com/zdream";
+    NSString *url_string=@"http:localhost:8081/zdream";
     NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=insert&author=%@&description=%@",data_obj.author,data_obj.content];
     
     //NSLog(@"The post string is %@", post_string);
