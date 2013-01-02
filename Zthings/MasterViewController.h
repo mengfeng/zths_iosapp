@@ -11,9 +11,11 @@
 @class Dream;
 @class ZthingsUtil;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) DreamDataController *data_controller;
-- (IBAction)add_new_obj:(id)sender;
+
+
+- (IBAction)refresh_btn_clicked:(id)sender;
 -(IBAction) done:(UIStoryboardSegue *) segue;
 -(IBAction) cancel:(UIStoryboardSegue *) segue;
 

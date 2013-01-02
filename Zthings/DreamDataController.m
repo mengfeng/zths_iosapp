@@ -63,6 +63,12 @@
     [self.dreamlist addObject:data_obj];
 }
 
+-(void) add_object_at_head:(Dream *)data_obj
+{
+    if([self count_of_dreams]==0) [self add_object:data_obj];
+    else   [self.dreamlist insertObject:data_obj atIndex:0];
+}
+
 
 
 

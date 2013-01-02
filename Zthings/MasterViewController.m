@@ -16,7 +16,7 @@
 
 @interface MasterViewController ()
 
--(void) _setup_data_controller;
+-(void) setup_data_controller;
 -(void) init_data_from_remote_json:(NSString *) data_class;
 
 
@@ -41,9 +41,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    
-    [self _setup_data_controller];
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
+    [self setup_data_controller];
     
     
 }
@@ -71,11 +71,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_data_controller count_of_dreams] ;
+    return [self.data_controller count_of_dreams] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Cell method is called.");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"main_obj_cell" forIndexPath:indexPath];
 
     Dream *object = [self.data_controller object_at_index:indexPath.row];
@@ -101,7 +102,9 @@
 //    }
 }
 
-- (IBAction)add_new_obj:(id)sender {
+
+- (IBAction)refresh_btn_clicked:(id)sender {
+    [self setup_data_controller];
 }
 
 
@@ -109,7 +112,7 @@
 {
     if ([[segue identifier] isEqualToString:@"show_details"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Dream *object = [_data_controller object_at_index:indexPath.row];
+        Dream *object = [self.data_controller object_at_index:indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
@@ -117,12 +120,7 @@
 -(IBAction) done:(UIStoryboardSegue *)segue
 {
     if([[segue identifier] isEqualToString:@"return_input"]){
-        AddDreamViewController *add_VC=[segue sourceViewController];
-        if(add_VC.created_data_obj){
-            [self.data_controller add_object:add_VC.created_data_obj];
-        }
         
-        [self.tableView reloadData];
     }
 }
 
@@ -131,14 +129,17 @@
 
 }
 
--(void) _setup_data_controller
+-(void) setup_data_controller
 {
     
-    if (!self.data_controller) {
-        self.data_controller = [[DreamDataController alloc] init];
-    }
+    
+    self.data_controller = [[DreamDataController alloc] init];
+    
     
     [self init_data_from_remote_json:@"Dream"];
+    
+    
+    [self.tableView reloadData];
     
     //NSLog(@"Count of Dreams: %d",[self.data_controller count_of_dreams]);
 }
@@ -146,7 +147,7 @@
 -(void) init_data_from_remote_json:(NSString *)data_class
 {
     url_string=[@"http://zinthedream.appspot.com/rpc?dispatcher=get_records&data_class=" stringByAppendingString:data_class];
-    //NSLog(@"remote url is %@", url_string);
+    NSLog(@"remote url is %@", url_string);
     
     NSData *response_data=[NSMutableData data];
     
@@ -199,7 +200,7 @@
     
     //NSLog(@"current data count is %d", [self.data_controller count_of_dreams]);
     
-    [self.tableView reloadData];
+    
 
 }
 
