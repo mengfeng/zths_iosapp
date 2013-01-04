@@ -24,7 +24,7 @@ STILL IN THE PROCESS OF CODING
 * Add New Data Object
 * Remove New Data Object
 * Edit A Selected Data Object
-	**Delegate and Protocol is used to implement this
+	** Delegate and Protocol is used to implement this
 
 ###TO DOs
 
