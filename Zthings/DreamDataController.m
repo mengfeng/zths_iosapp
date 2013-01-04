@@ -13,6 +13,7 @@
 -(void) initialize_config;
 -(BOOL) add_new_obj_to_server:(Dream *)data_obj;
 -(BOOL) remove_object_from_server:(Dream *)data_obj;
+-(BOOL) update_object_to_server:(Dream *)data_obj;
 -(BOOL) send_request_server:(NSString *) url_string post_string:(NSString *) post_string;
 @end
 
@@ -161,6 +162,7 @@
     
 }
 
+
 -(BOOL) remove_object_from_server:(Dream *)data_obj
 {
     NSString *url_string=[[NSString alloc] initWithFormat:@"%@/%@",host_name,app_name] ;
@@ -170,10 +172,32 @@
     return [self send_request_server:url_string post_string:post_string];
 }
 
+-(void)update_object:(Dream *)data_obj current_index:(NSInteger)current_index
+{
+    
+    Dream *current_data_obj=[self object_at_index:current_index];
+    
+    if(current_data_obj != data_obj)    current_data_obj.content=data_obj.content;
+   
+        
+    [self update_object_to_server:data_obj];
+    
+}
+
+-(BOOL) update_object_to_server:(Dream *)data_obj
+{
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/%@",host_name,app_name] ;
+    NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=update&record_key=%@&description=%@",data_obj.instance_key,data_obj.content];
+    
+    
+    return [self send_request_server:url_string post_string:post_string];
+
+}
+
 -(BOOL) send_request_server:(NSString *)url_string post_string:(NSString *)post_string
 {
     post_string=[post_string stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-    //NSLog(@"post string is %@",post_string);
+    
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_string]];
     request.HTTPMethod=@"POST";
     request.HTTPBody=[post_string dataUsingEncoding:NSUTF8StringEncoding];
@@ -187,6 +211,7 @@
     return YES;
 
 }
+
 
 
 @end

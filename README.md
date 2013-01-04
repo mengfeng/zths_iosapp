@@ -23,7 +23,11 @@ STILL IN THE PROCESS OF CODING
 * View Details
 * Add New Data Object
 * Remove New Data Object
+* Edit A Selected Data Object
+	**Delegate and Protocol is used to implement this
 
 ###TO DOs
-* Edit A Selected Data Object
+
+* Add a nice UI Framework to replace the built-in controls.
 * APP HTTP Authentication
+

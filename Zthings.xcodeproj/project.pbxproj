@@ -62,6 +62,7 @@
 		B24A018916942321006CF19A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B24D9AE61691817D007F4128 /* AddDreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDreamViewController.h; sourceTree = "<group>"; };
 		B24D9AE71691817D007F4128 /* AddDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamViewController.m; sourceTree = "<group>"; };
+		B2942DD016958E7200D503CD /* Update_Item_Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Update_Item_Delegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +124,7 @@
 				B23C909B168EE32D003EA9AC /* DreamDataController.h */,
 				B23C909C168EE32D003EA9AC /* DreamDataController.m */,
 				B23C908D168EDCC9003EA9AC /* MasterViewController.h */,
+				B2942DD016958E7200D503CD /* Update_Item_Delegate.h */,
 				B23C908E168EDCC9003EA9AC /* MasterViewController.m */,
 				B23C9090168EDCC9003EA9AC /* DetailViewController.h */,
 				B23C9091168EDCC9003EA9AC /* DetailViewController.m */,

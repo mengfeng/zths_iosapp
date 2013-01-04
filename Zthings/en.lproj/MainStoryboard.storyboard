@@ -22,21 +22,21 @@
         <!--Master View Controller - Master-->
         <scene sceneID="18">
             <objects>
-                <tableViewController storyboardIdentifier="" title="Master" id="12" customClass="MasterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
+                <tableViewController storyboardIdentifier="master_view_controller" title="Master" useStoryboardIdentifierAsRestorationIdentifier="YES" id="12" customClass="MasterViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="49" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="main_obj_cell" textLabel="phq-AM-6qj" detailTextLabel="hOo-eC-foz" rowHeight="61" style="IBUITableViewCellStyleSubtitle" id="lJ0-d7-vTF">
-                                <rect key="frame" x="0.0" y="22" width="320" height="61"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="main_obj_cell" textLabel="phq-AM-6qj" detailTextLabel="hOo-eC-foz" rowHeight="49" style="IBUITableViewCellStyleSubtitle" id="lJ0-d7-vTF">
+                                <rect key="frame" x="0.0" y="22" width="320" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="phq-AM-6qj">
-                                            <rect key="frame" x="10" y="12" width="29" height="18"/>
+                                            <rect key="frame" x="10" y="6" width="29" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -70,7 +70,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="cOb-78-ZeT">
                             <connections>
-                                <action selector="add_new_obj:" destination="12" id="MJ0-3x-Hgo"/>
                                 <segue destination="W7a-8y-Xkn" kind="push" id="eWJ-OT-nCt"/>
                             </connections>
                         </barButtonItem>
@@ -239,7 +238,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="content_text" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-5D-4Hs">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="291" id="2ea-2G-7zS"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="101" type="user" id="wl2-9f-DGE"/>
                                     <constraint firstAttribute="height" constant="272" id="yJu-Ok-88n"/>
                                 </constraints>
@@ -272,6 +270,7 @@
                             <constraint firstItem="XfO-jh-IVR" firstAttribute="leading" secondItem="Mgn-xo-1S3" secondAttribute="leading" type="default" id="BRf-qY-sqi"/>
                             <constraint firstItem="Mgn-xo-1S3" firstAttribute="top" secondItem="Lm1-2f-5gy" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Dvl-SB-h3a"/>
                             <constraint firstItem="WWv-L7-NpS" firstAttribute="leading" secondItem="Cpc-EX-17s" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Er4-hE-5aq"/>
+                            <constraint firstItem="EzZ-5D-4Hs" firstAttribute="leading" secondItem="Lm1-2f-5gy" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ey2-MC-q7X"/>
                             <constraint firstItem="WWv-L7-NpS" firstAttribute="baseline" secondItem="Cpc-EX-17s" secondAttribute="baseline" type="default" id="JVh-iO-SaM"/>
                             <constraint firstItem="3ha-RF-Ydz" firstAttribute="top" secondItem="Lm1-2f-5gy" secondAttribute="top" constant="20" symbolic="YES" type="default" id="LiN-g7-4no"/>
                             <constraint firstItem="Cpc-EX-17s" firstAttribute="trailing" secondItem="eHQ-fc-LY3" secondAttribute="trailing" type="default" id="NHY-MS-fmH"/>
@@ -290,7 +289,9 @@
                             <constraint firstItem="3ha-RF-Ydz" firstAttribute="leading" secondItem="Lm1-2f-5gy" secondAttribute="leading" constant="28" id="wWk-Gk-u9l"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Dream Details" id="FEK-U6-err"/>
+                    <navigationItem key="navigationItem" title="Dream Details" id="FEK-U6-err">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="TiP-2z-JHL"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="author_label" destination="Mgn-xo-1S3" id="ROG-sY-W0x"/>
                         <outlet property="content_label" destination="EzZ-5D-4Hs" id="3Ee-D3-97x"/>
@@ -303,38 +304,6 @@
             <point key="canvasLocation" x="949" y="-247"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddDreamViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddDreamViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="author_input" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="content_input" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="author_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="content_label" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="date_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="title_label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="refresh_btn_clicked:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

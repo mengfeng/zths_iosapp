@@ -84,7 +84,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NO;
+    return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,7 +108,10 @@
     if ([[segue identifier] isEqualToString:@"show_details"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Dream *object = [self.data_controller object_at_index:indexPath.row];
+        
         [[segue destinationViewController] setDetailItem:object];
+        [[segue destinationViewController] setCurrent_index:indexPath.row];
+        [[segue destinationViewController] setDelegate:self];
     }
 }
 
@@ -121,6 +124,15 @@
 
 -(IBAction) cancel:(UIStoryboardSegue *)segue
 {
+
+}
+
+-(BOOL) commit_current_item:(id)data_item current_index:(NSInteger)current_index
+{
+    [self.data_controller update_object:data_item current_index:current_index];
+    [self.tableView reloadData];
+    
+    return YES;
 
 }
 
