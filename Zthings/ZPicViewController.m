@@ -7,9 +7,11 @@
 //
 
 #import "ZPicViewController.h"
-
+#import "ZPicDataController.h"
+#import "ZPic.h"
+#import "ZPicDetailsViewController.h"
 @interface ZPicViewController ()
-
+-(void) setup_data_controller;
 @end
 
 @implementation ZPicViewController
@@ -27,11 +29,9 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setup_data_controller];
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,24 +44,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.data_controller count_of_objects] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"zpic_main_cell" forIndexPath:indexPath];
+    ZPic *current_obj=[self.data_controller object_at_index:indexPath.row];
     
-    // Configure the cell...
+    UIImageView *imageView=(UIImageView *)[cell viewWithTag:1];
+    UILabel *textLabel=(UILabel *)[cell viewWithTag:2];
+
+//    //UIImageView *imageView=[[UIImageView alloc] init];
+//    cell.imageView.frame=CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, 140, 89);
+//    cell.imageView.contentMode=UIViewContentModeScaleToFill;
+    imageView.image=[[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:current_obj.image_url]]];    
+    
+    textLabel.numberOfLines=4;
+    textLabel.font=[UIFont systemFontOfSize:13];
+    textLabel.text
+    =current_obj.content;
     
     return cell;
 }
@@ -117,5 +126,55 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+
+- (IBAction)refresh_btn_clicked:(id)sender {
+    [self setup_data_controller];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"show_pic_details"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        ZPic *object = [self.data_controller object_at_index:indexPath.row];
+        
+        [[segue destinationViewController] setDetailItem:object];
+        [[segue destinationViewController] setCurrent_index:indexPath.row];
+        [[segue destinationViewController] setDelegate:self];
+    }
+}
+
+-(IBAction) done:(UIStoryboardSegue *)segue
+{
+    if([[segue identifier] isEqualToString:@"return_input"]){
+        
+    }
+}
+
+-(IBAction) cancel:(UIStoryboardSegue *)segue
+{
+    
+}
+
+-(BOOL) commit_current_item:(id)data_item current_index:(NSInteger)current_index
+{
+    [self.data_controller update_object:data_item current_index:current_index];
+    [self.tableView reloadData];
+    
+    return YES;
+    
+}
+
+-(void) setup_data_controller
+{
+    
+    self.data_controller=[[ZPicDataController alloc] init_data_from_remote_json:@"ZPicLife"];
+    
+    
+    [self.tableView reloadData];
+    
+}
+
 
 @end

@@ -21,7 +21,6 @@
 
 @end
 @interface MasterViewController (){
-    NSString *url_string;
     
 
 }

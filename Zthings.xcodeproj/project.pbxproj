@@ -29,7 +29,9 @@
 		B24A018A16942321006CF19A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B24A018916942321006CF19A /* Default-568h@2x.png */; };
 		B24D9AE81691817E007F4128 /* AddDreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D9AE71691817D007F4128 /* AddDreamViewController.m */; };
 		B254DBB3169704CB00643561 /* ZPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B254DBB2169704CB00643561 /* ZPicViewController.m */; };
-		B254DBBA169709FD00643561 /* ZPicDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B254DBB9169709FD00643561 /* ZPicDetailsViewController.m */; };
+		B29643CF169722040069D1E1 /* ZPic.m in Sources */ = {isa = PBXBuildFile; fileRef = B29643CE169722040069D1E1 /* ZPic.m */; };
+		B29643D3169722B40069D1E1 /* ZPicDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29643D2169722B40069D1E1 /* ZPicDataController.m */; };
+		B29643EA1697FBFC0069D1E1 /* ZPicDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29643E91697FBFC0069D1E1 /* ZPicDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,9 +68,13 @@
 		B24D9AE71691817D007F4128 /* AddDreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDreamViewController.m; sourceTree = "<group>"; };
 		B254DBB1169704CB00643561 /* ZPicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPicViewController.h; sourceTree = "<group>"; };
 		B254DBB2169704CB00643561 /* ZPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPicViewController.m; sourceTree = "<group>"; };
-		B254DBB8169709FD00643561 /* ZPicDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPicDetailsViewController.h; sourceTree = "<group>"; };
-		B254DBB9169709FD00643561 /* ZPicDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPicDetailsViewController.m; sourceTree = "<group>"; };
 		B2942DD016958E7200D503CD /* Update_Item_Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Update_Item_Delegate.h; sourceTree = "<group>"; };
+		B29643CD169722040069D1E1 /* ZPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPic.h; sourceTree = "<group>"; };
+		B29643CE169722040069D1E1 /* ZPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPic.m; sourceTree = "<group>"; };
+		B29643D1169722B30069D1E1 /* ZPicDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPicDataController.h; sourceTree = "<group>"; };
+		B29643D2169722B40069D1E1 /* ZPicDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPicDataController.m; sourceTree = "<group>"; };
+		B29643E71697FBE50069D1E1 /* ZPicDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPicDetailsViewController.h; sourceTree = "<group>"; };
+		B29643E91697FBFC0069D1E1 /* ZPicDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPicDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +94,6 @@
 		B23C9063168EDCC9003EA9AC = {
 			isa = PBXGroup;
 			children = (
-				B254DBB8169709FD00643561 /* ZPicDetailsViewController.h */,
-				B254DBB9169709FD00643561 /* ZPicDetailsViewController.m */,
 				B24A018916942321006CF19A /* Default-568h@2x.png */,
 				B24A018716942318006CF19A /* Default@2x.png */,
 				B24A018516942214006CF19A /* Default.png */,
@@ -122,23 +126,30 @@
 		B23C9078168EDCC9003EA9AC /* Zthings */ = {
 			isa = PBXGroup;
 			children = (
-				B23C9081168EDCC9003EA9AC /* AppDelegate.h */,
-				B23C9082168EDCC9003EA9AC /* AppDelegate.m */,
-				B23C908A168EDCC9003EA9AC /* MainStoryboard.storyboard */,
-				B254DBB1169704CB00643561 /* ZPicViewController.h */,
-				B254DBB2169704CB00643561 /* ZPicViewController.m */,
 				B24D9AE61691817D007F4128 /* AddDreamViewController.h */,
 				B24D9AE71691817D007F4128 /* AddDreamViewController.m */,
+				B23C9081168EDCC9003EA9AC /* AppDelegate.h */,
+				B23C9082168EDCC9003EA9AC /* AppDelegate.m */,
+				B23C9090168EDCC9003EA9AC /* DetailViewController.h */,
+				B23C9091168EDCC9003EA9AC /* DetailViewController.m */,
 				B23C9098168EDFA9003EA9AC /* Dream.h */,
 				B23C9099168EDFA9003EA9AC /* Dream.m */,
 				B23C909B168EE32D003EA9AC /* DreamDataController.h */,
 				B23C909C168EE32D003EA9AC /* DreamDataController.m */,
+				B23C908A168EDCC9003EA9AC /* MainStoryboard.storyboard */,
 				B23C908D168EDCC9003EA9AC /* MasterViewController.h */,
-				B2942DD016958E7200D503CD /* Update_Item_Delegate.h */,
 				B23C908E168EDCC9003EA9AC /* MasterViewController.m */,
-				B23C9090168EDCC9003EA9AC /* DetailViewController.h */,
-				B23C9091168EDCC9003EA9AC /* DetailViewController.m */,
+				B29643D916973BBE0069D1E1 /* Resources */,
 				B23C9079168EDCC9003EA9AC /* Supporting Files */,
+				B2942DD016958E7200D503CD /* Update_Item_Delegate.h */,
+				B29643CD169722040069D1E1 /* ZPic.h */,
+				B29643CE169722040069D1E1 /* ZPic.m */,
+				B29643D1169722B30069D1E1 /* ZPicDataController.h */,
+				B29643D2169722B40069D1E1 /* ZPicDataController.m */,
+				B29643E91697FBFC0069D1E1 /* ZPicDetailsViewController.m */,
+				B29643E71697FBE50069D1E1 /* ZPicDetailsViewController.h */,
+				B254DBB1169704CB00643561 /* ZPicViewController.h */,
+				B254DBB2169704CB00643561 /* ZPicViewController.m */,
 				B2118128169040C70010EB39 /* ZthingsUtil.h */,
 				B2118129169040C70010EB39 /* ZthingsUtil.m */,
 			);
@@ -157,6 +168,13 @@
 				B23C9088168EDCC9003EA9AC /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B29643D916973BBE0069D1E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +257,9 @@
 				B211812A169040C70010EB39 /* ZthingsUtil.m in Sources */,
 				B24D9AE81691817E007F4128 /* AddDreamViewController.m in Sources */,
 				B254DBB3169704CB00643561 /* ZPicViewController.m in Sources */,
-				B254DBBA169709FD00643561 /* ZPicDetailsViewController.m in Sources */,
+				B29643CF169722040069D1E1 /* ZPic.m in Sources */,
+				B29643D3169722B40069D1E1 /* ZPicDataController.m in Sources */,
+				B29643EA1697FBFC0069D1E1 /* ZPicDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZPicDataController;
 @interface ZPicViewController : UITableViewController
+@property (nonatomic,strong)  ZPicDataController *data_controller;
 
 @end

@@ -26,6 +26,11 @@ STILL IN THE PROCESS OF CODING
 * Edit A Selected Data Object
   * Delegate and Protocol is used to implement this
 
+* Z Dreams is fully implemented
+* Z Pic
+  * View Images+Content
+  * Edit Content
+
 ###TO DOs
 
 * Add a nice UI Framework to replace the built-in controls.
