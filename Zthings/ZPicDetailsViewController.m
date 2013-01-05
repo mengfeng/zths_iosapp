@@ -44,6 +44,7 @@
 {
     if(self.detailItem){
         self.image_view.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailItem.image_url]]];
+        self.image_view.contentMode=UIViewContentModeScaleAspectFit;
         //[self.image_view sizeToFit];
         self.content_label.text=self.detailItem.content;
         

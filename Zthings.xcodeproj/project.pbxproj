@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B211812A169040C70010EB39 /* ZthingsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B2118129169040C70010EB39 /* ZthingsUtil.m */; };
+		B22BBA1A169853410038644A /* ZPicAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22BBA19169853410038644A /* ZPicAddViewController.m */; };
+		B22BBA1E16985E710038644A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22BBA1C16985E360038644A /* MobileCoreServices.framework */; };
 		B23C9073168EDCC9003EA9AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9072168EDCC9003EA9AC /* UIKit.framework */; };
 		B23C9075168EDCC9003EA9AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9074168EDCC9003EA9AC /* Foundation.framework */; };
 		B23C9077168EDCC9003EA9AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23C9076168EDCC9003EA9AC /* CoreGraphics.framework */; };
@@ -37,6 +39,9 @@
 /* Begin PBXFileReference section */
 		B2118128169040C70010EB39 /* ZthingsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZthingsUtil.h; sourceTree = "<group>"; };
 		B2118129169040C70010EB39 /* ZthingsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZthingsUtil.m; sourceTree = "<group>"; };
+		B22BBA18169853410038644A /* ZPicAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPicAddViewController.h; sourceTree = "<group>"; };
+		B22BBA19169853410038644A /* ZPicAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPicAddViewController.m; sourceTree = "<group>"; };
+		B22BBA1C16985E360038644A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B23C906E168EDCC9003EA9AC /* Zthings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zthings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23C9072168EDCC9003EA9AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B23C9074168EDCC9003EA9AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22BBA1E16985E710038644A /* MobileCoreServices.framework in Frameworks */,
 				B23C9073168EDCC9003EA9AC /* UIKit.framework in Frameworks */,
 				B23C9075168EDCC9003EA9AC /* Foundation.framework in Frameworks */,
 				B23C9077168EDCC9003EA9AC /* CoreGraphics.framework in Frameworks */,
@@ -116,6 +122,7 @@
 		B23C9071168EDCC9003EA9AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B22BBA1C16985E360038644A /* MobileCoreServices.framework */,
 				B23C9072168EDCC9003EA9AC /* UIKit.framework */,
 				B23C9074168EDCC9003EA9AC /* Foundation.framework */,
 				B23C9076168EDCC9003EA9AC /* CoreGraphics.framework */,
@@ -144,10 +151,12 @@
 				B2942DD016958E7200D503CD /* Update_Item_Delegate.h */,
 				B29643CD169722040069D1E1 /* ZPic.h */,
 				B29643CE169722040069D1E1 /* ZPic.m */,
+				B22BBA18169853410038644A /* ZPicAddViewController.h */,
+				B22BBA19169853410038644A /* ZPicAddViewController.m */,
 				B29643D1169722B30069D1E1 /* ZPicDataController.h */,
 				B29643D2169722B40069D1E1 /* ZPicDataController.m */,
-				B29643E91697FBFC0069D1E1 /* ZPicDetailsViewController.m */,
 				B29643E71697FBE50069D1E1 /* ZPicDetailsViewController.h */,
+				B29643E91697FBFC0069D1E1 /* ZPicDetailsViewController.m */,
 				B254DBB1169704CB00643561 /* ZPicViewController.h */,
 				B254DBB2169704CB00643561 /* ZPicViewController.m */,
 				B2118128169040C70010EB39 /* ZthingsUtil.h */,
@@ -260,6 +269,7 @@
 				B29643CF169722040069D1E1 /* ZPic.m in Sources */,
 				B29643D3169722B40069D1E1 /* ZPicDataController.m in Sources */,
 				B29643EA1697FBFC0069D1E1 /* ZPicDetailsViewController.m in Sources */,
+				B22BBA1A169853410038644A /* ZPicAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

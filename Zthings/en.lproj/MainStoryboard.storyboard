@@ -163,7 +163,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-ZU-1NK">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-ZU-1NK">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="151" id="V8J-a5-Ifo"/>
                                             </constraints>
@@ -197,7 +197,13 @@
                             <outlet property="delegate" destination="ODR-0n-lSx" id="OiO-po-5VV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Z Pics" id="EKC-XM-ZQQ"/>
+                    <navigationItem key="navigationItem" title="Z Pics" id="EKC-XM-ZQQ">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="Ama-iN-71F">
+                            <connections>
+                                <segue destination="Rh9-Wv-Uoq" kind="push" id="wS2-I8-x77"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkw-yx-fT5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,7 +250,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8a-eu-1hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1465" y="963"/>
+            <point key="canvasLocation" x="1511" y="1530"/>
+        </scene>
+        <!--Pic Add View Controller - Add New Z Pic-->
+        <scene sceneID="mLf-7O-Ymm">
+            <objects>
+                <viewController id="Rh9-Wv-Uoq" customClass="ZPicAddViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ndr-e3-V9g">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYy-8e-nrf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="2hu-vl-FDG"/>
+                                    <constraint firstAttribute="width" constant="32" id="yEO-8f-JFZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showPhotoAlbum:" destination="Rh9-Wv-Uoq" eventType="touchUpInside" id="o9a-Ve-DxK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="MVC-sN-t0I">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="258" id="5Mr-Oi-FPq"/>
+                                    <constraint firstAttribute="height" constant="144" id="98p-oy-U0S"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is in your mind?" translatesAutoresizingMaskIntoConstraints="NO" id="PCg-0S-0AT">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="f1k-hl-mFL"/>
+                                    <constraint firstAttribute="height" constant="231" id="oGR-fl-Okd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Rh9-Wv-Uoq" id="CWK-ox-fwr"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MVC-sN-t0I" firstAttribute="leading" secondItem="PCg-0S-0AT" secondAttribute="leading" type="default" id="7MH-Jr-ah6"/>
+                            <constraint firstAttribute="trailing" secondItem="PCg-0S-0AT" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="WCz-zG-tdP"/>
+                            <constraint firstItem="MVC-sN-t0I" firstAttribute="top" secondItem="ndr-e3-V9g" secondAttribute="top" constant="7" id="YDH-FK-k2v"/>
+                            <constraint firstItem="zYy-8e-nrf" firstAttribute="top" secondItem="ndr-e3-V9g" secondAttribute="top" constant="14" id="jUS-Si-6Us"/>
+                            <constraint firstItem="PCg-0S-0AT" firstAttribute="top" secondItem="MVC-sN-t0I" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="u7T-Ac-MVn"/>
+                            <constraint firstAttribute="trailing" secondItem="zYy-8e-nrf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zdQ-cr-dRD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Z Pic" id="3K2-QM-asv">
+                        <barButtonItem key="leftBarButtonItem" title="cancel" id="sCF-K3-OFN">
+                            <connections>
+                                <segue destination="Aaf-0i-Jmx" kind="unwind" unwindAction="cancel:" id="pfM-5N-QTY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="tRT-4L-pMS">
+                            <connections>
+                                <segue destination="Aaf-0i-Jmx" kind="unwind" unwindAction="done:" id="HA4-Dd-9nB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="content_input" destination="PCg-0S-0AT" id="hZr-fC-cjm"/>
+                        <outlet property="image_view" destination="MVC-sN-t0I" id="gI2-r2-sLx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vdu-eR-vA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Aaf-0i-Jmx" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1475" y="954"/>
         </scene>
         <!--Add Dream View Controller - Add A New Dream-->
         <scene sceneID="EN7-1o-xfx">
@@ -521,6 +603,14 @@
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+        <class className="ZPicAddViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZPicAddViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showPhotoAlbum:"/>
+                <relationship kind="outlet" name="content_input" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="image_view" candidateClass="UIImageView"/>
+            </relationships>
         </class>
         <class className="ZPicDetailsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZPicDetailsViewController.h"/>
