@@ -87,7 +87,8 @@
 -(void) add_object_at_head_with_image:(ZPic *)data_obj image:(UIImage *)image
 {
     NSDictionary *dict_info=[self upload_image_to_server:image];
-    data_obj.image_url=[dict_info objectForKey:@"image_url"];
+    NSLog(@"image url is: %@",data_obj.image_url);
+    
     data_obj.instance_key=[dict_info objectForKey:@"new_record_key"];
     [self.obj_list insertObject:data_obj atIndex:0];
     [self update_object:data_obj current_index:0];
@@ -97,8 +98,38 @@
 {
     NSString * upload_url=[self get_upload_url];
     if(![upload_url isEqualToString:@""]){
+        NSString *filename=@"iOS_Uploaded_File.png";
+        NSData *image_data= UIImagePNGRepresentation(image);
+        NSMutableURLRequest *request=[[NSMutableURLRequest alloc] init];
+        request.URL=[NSURL URLWithString:upload_url];
+        request.HTTPMethod=@"POST";
+        
+        NSString *boundary = @"---------------------------14737809831466499882746641449";
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        NSMutableData *post_data_body=[[NSMutableData alloc] init];
+        
+        [post_data_body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [post_data_body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"record_file\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+        [post_data_body appendData:[@"Content-Type: image/png\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [post_data_body appendData:image_data];
+        [post_data_body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+        request.HTTPBody=post_data_body;
+        
+        NSURLResponse *response=nil;
+        NSError *error=nil;
+        
+        
+        NSData *response_data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:response_data options:NSJSONReadingMutableContainers error:&error];
+        
+        return json_obj;
+
     
     }
+    
+    return nil;
 }
 
 -(id) init_data_from_remote_json:(NSString *)data_class
