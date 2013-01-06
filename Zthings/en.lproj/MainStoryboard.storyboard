@@ -314,7 +314,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="tRT-4L-pMS">
                             <connections>
-                                <segue destination="Aaf-0i-Jmx" kind="unwind" unwindAction="done:" id="HA4-Dd-9nB"/>
+                                <segue destination="Aaf-0i-Jmx" kind="unwind" identifier="return_new_dataitem" unwindAction="done:" id="HA4-Dd-9nB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

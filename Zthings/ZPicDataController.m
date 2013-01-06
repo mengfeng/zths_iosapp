@@ -13,7 +13,9 @@
 -(BOOL) add_new_obj_to_server:(ZPic *)data_obj;
 -(BOOL) remove_object_from_server:(ZPic *)data_obj;
 -(BOOL) update_object_to_server:(ZPic *)data_obj;
--(BOOL) send_request_server:(NSString *) url_string post_string:(NSString *) post_string;
+-(NSString *) send_request_server:(NSString *) url_string post_string:(NSString *) post_string;
+-(NSDictionary *) upload_image_to_server:(UIImage *) image;
+-(NSString *)get_upload_url;
 @end
 
 @interface ZPicDataController()
@@ -82,23 +84,35 @@
     [self add_new_obj_to_server:data_obj];
 }
 
+-(void) add_object_at_head_with_image:(ZPic *)data_obj image:(UIImage *)image
+{
+    NSDictionary *dict_info=[self upload_image_to_server:image];
+    data_obj.image_url=[dict_info objectForKey:@"image_url"];
+    data_obj.instance_key=[dict_info objectForKey:@"new_record_key"];
+    [self.obj_list insertObject:data_obj atIndex:0];
+    [self update_object:data_obj current_index:0];
+}
+
+-(NSDictionary *) upload_image_to_server:(UIImage *)image
+{
+    NSString * upload_url=[self get_upload_url];
+    if(![upload_url isEqualToString:@""]){
+    
+    }
+}
 
 -(id) init_data_from_remote_json:(NSString *)data_class
 {
     [self initialize_config];
     
     self.obj_list=[[NSMutableArray alloc] init];
-    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/rpc?dispatcher=get_records&data_class=%@",host_name,data_class];
-    NSData *response_data=[NSMutableData data];
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/rpc",host_name];
+    NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=get_records&data_class=%@",data_class];
     
-    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:url_string]];
-    
-    NSURLResponse *response=nil;
-    NSError *error=[[NSError alloc] init];
-    
-    response_data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *response_string=@"";
+    response_string= [self send_request_server:url_string post_string:post_string];
     NSError *json_error=[[NSError alloc] init];
-    NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:response_data options:NSJSONReadingMutableContainers error:&json_error];
+    NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:[response_string dataUsingEncoding:NSUTF8StringEncoding]  options:NSJSONReadingMutableContainers error:&json_error];
     
     if(json_obj){
         NSString *status=[json_obj objectForKey:@"status"];
@@ -145,7 +159,8 @@
     NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=insert&author=%@&description=%@",data_obj.author,data_obj.content ];
     
     
-    return [self send_request_server:url_string post_string:post_string];
+    [self send_request_server:url_string post_string:post_string];
+    return YES;
 }
 
 -(void) remove_object_at_index:(NSInteger)index
@@ -165,7 +180,8 @@
     NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=delete&record_key=%@",data_obj.instance_key];
     
     
-    return [self send_request_server:url_string post_string:post_string];
+    [self send_request_server:url_string post_string:post_string];
+    return YES;
 }
 
 -(void)update_object:(ZPic *)data_obj current_index:(NSInteger)current_index
@@ -186,11 +202,29 @@
     NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=update_records&actionType=update&record_key=%@&description=%@",data_obj.instance_key,data_obj.content];
     
     
-    return [self send_request_server:url_string post_string:post_string];
+    [self send_request_server:url_string post_string:post_string];
+    
+    return YES;
     
 }
 
--(BOOL) send_request_server:(NSString *)url_string post_string:(NSString *)post_string
+-(NSString *) get_upload_url
+{
+    NSString *url_string=[[NSString alloc] initWithFormat:@"%@/%@",host_name,app_name];
+    NSString *post_string=[[NSString alloc] initWithFormat:@"dispatcher=get_upload_url"];
+    
+    NSString *response_string=@"";
+    response_string= [self send_request_server:url_string post_string:post_string];
+    NSError *error=[[NSError alloc] init];
+    NSDictionary *json_obj=[NSJSONSerialization JSONObjectWithData:[response_string dataUsingEncoding:NSUTF8StringEncoding]  options:NSJSONReadingMutableContainers error:&error];
+    if([[json_obj objectForKey:@"status"] isEqualToString:@"ok"]){
+        return [json_obj objectForKey:@"upload_url"];
+    }
+    return @"";
+
+}
+
+-(NSString *) send_request_server:(NSString *)url_string post_string:(NSString *)post_string
 {
     post_string=[post_string stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
     
@@ -203,8 +237,8 @@
     NSData *response_data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     NSString *response_string=[[NSString alloc] initWithData:response_data encoding:NSUTF8StringEncoding];
-    NSLog(@"The response string is %@", response_string);
-    return YES;
+    //NSLog(@"The response string is %@", response_string);
+    return response_string;
     
 }
 

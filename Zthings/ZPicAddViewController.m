@@ -7,6 +7,9 @@
 //
 
 #import "ZPicAddViewController.h"
+#import "ZPicViewController.h"
+#import "ZPicDataController.h"
+#import "ZPic.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @interface ZPicAddViewController ()
@@ -65,6 +68,26 @@
     
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"return_new_dataitem"]){
+        
+        if(self.image_view.image){
+            //create the new dataitem
+            
+            NSString *content=self.content_input.text;
+            ZPic *new_data_obj=[[ZPic alloc] init];
+            new_data_obj.content=content;
+            
+            ZPicViewController *master_vc=[segue destinationViewController];
+            [master_vc.data_controller add_object_at_head_with_image:new_data_obj image:self.image_view.image];
+            [master_vc.tableView reloadData];
+        }
+        
+        
+    }
+}
+
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
@@ -93,6 +116,8 @@
 {
     self.image_view.image=selected_image;
     self.image_view.contentMode=UIViewContentModeScaleAspectFit;
+    
+    //controlling the UI interactions for other controls
     self.content_input.text=@"What is in your mind?";
     self.content_input.editable=YES;
     
